@@ -1,0 +1,22 @@
+main {
+  width: 500px;
+  border: 2px solid black;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.columnUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#headerDiv {
+  text-align: center;
+}
+
+#partyDiv {
+  
+}
+
