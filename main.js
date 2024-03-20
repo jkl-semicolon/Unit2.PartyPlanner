@@ -66,10 +66,26 @@ const render = async () => {
   else return;
 
   state.events.forEach((event) => {
-    const newDiv = document.createElement('div');
-    newDiv.setAttribute('class','partyDiv');
-    const newName = 
-    
+    const container = document.createElement('div');
+    container.setAttribute('class','partyDiv');
+    const name = document.createElement('h2');
+    name.innerHTML = event.name;
+    const location = document.createElement('h4');
+    location.innerHTML = event.location;
+    const date = document.createElement('h4');
+    date.setAttribute('id','middleBorder');
+    date.innerHTML = event.date.slice(0,10);
+    const time = document.createElement('h4');
+    time.innerHTML = event.date.slice(11,16);
+    const description = document.createElement('p');
+    description.innerHTML = event.description;
+    container.appendChild(name);
+    container.appendChild(location);
+    container.appendChild(date);
+    container.appendChild(time);
+    container.appendChild(description);
+    partiesDiv.appendChild(container);
+    console.log(container);
   })
 
   console.log(state.events);
