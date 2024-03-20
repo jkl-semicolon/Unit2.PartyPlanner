@@ -9,12 +9,18 @@ main {
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
+  background-color: rgba(198, 198, 198);
+  font-family: 'Virgil';
+}
+
+h1 {
+  font-size:3.5rem;
 }
 
 h4 {
   width: 33%;
   font-size: 1.2rem;
-  font-weight: 450;
+  font-weight: 600;
 }
 
 h2 {
