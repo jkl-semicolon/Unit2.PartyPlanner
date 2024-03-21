@@ -8,12 +8,33 @@
   <body>
     <header></header>
     <main>
-      <div id="headerDiv" class="columnUp">
-        <h1>🎊 THE PARTY LIST! 🎊</h1>
-        <h3>(refreshes every five seconds)</h3>
-      </div>
-      <div id="partiesDiv" class="columnUp"></div>
+      <section>
+        <div id="headerDiv" class="columnUp">
+          <h1>🎊 THE PARTY LIST! 🎊</h1>
+          <h3>(refreshes every five seconds)</h3>
+        </div>
+        <div id="partiesDiv" class="columnUp"></div>
+      </section>
+      <section id="addPartySection">
+        <div id="headerDiv" class="columnUp">
+          <h1>🍻 ADD PARTY!</h1>
+        </div>
+        <div id="formDiv" class="columnUp">
+          <form>
+            <label for="pName">Party Name: </label><br>
+            <input type="text" id="pName" name="pName"><br><br>
+            <label for="location">Location: </label><br>
+            <input type="text" id="location" name="location"><br><br>
+            <label for="datetime">Date & Time: </label><br>
+            <input type="datetime-local" id="datetime" name="datetime"><br><br>
+            <label for="description">Description: </label><br>
+            <textarea id="description" name="description"></textarea><br><br>
+            <input type="submit" id="submit" name="submit">
+          </form>
+        </div>
+      </section>
     </main>
+
     <footer></footer>
   </body>
 </html>
