@@ -57,33 +57,63 @@ const getEmoji = () => emojis[Math.floor(Math.random() * emojis.length)];
 // Got random emoji array + function from https://gist.github.com/ikr7/c72843556ef3a12014c3
 const colors = ['FF8080','FFCF96','F6FDC3','CDFAD5'];
 
-$submit.addEventListener("click",(event) => {
+$submit.addEventListener("click",async (event) => {
   event.preventDefault();
-  if (!pName.value || !pLocation.value || !datetime.value || !description.value) {
-    alert('🐧 Make sure you fill out all form fields completely! 🐧');
-    return;
-  }
+  // if (!pName.value || !pLocation.value || !datetime.value || !description.value) {
+  //   alert('🐧 Make sure you fill out all form fields completely! 🐧');
+  //   pName.value = '';
+  //   pLocation.value = '';
+  //   datetime.value = '';
+  //   description.value = '';
+  //   return;
+  // }
   state.newEvent.name = pName.value;
   state.newEvent.location = pLocation.value;
   state.newEvent.date = datetime.value + ':35.766Z';
   state.newEvent.description = description.value;
-  state.newEvent.cohortId = 56;
-  state.newEvent.id = Math.floor(Math.random() * 10000000000000);
+  // state.newEvent.cohortId = 56;
+  // state.newEvent.id = Math.floor(Math.random() * 10000000000000);
+  // pName.value = '';
+  // pLocation.value = '';
+  // datetime.value = '';
+  // description.value = '';
   console.log(state.newEvent);
 
-  postDataFunction(API_URL, state.newEvent)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch ((error) => {
-      console.error("Error:", error);
+  // postDataFunction(API_URL, state.newEvent)
+  //   .then((response) => {
+  //     console.log(response);
+  //   })
+  //   .catch ((error) => {
+  //     console.error("Error:", error);
+  //   });
+  // console.log(state.newEvent);
+  // for (const property in state.newEvent) {
+  //   delete state.newEvent[property];
+  // }
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(state.newEvent),
     });
-  console.log(state.newEvent);
-  for (const property in state.newEvent) {
-    delete state.newEvent[property];
+    if (!response.ok) {
+      throw new Error("Failed to create artist");
+    }
+    // pName.value = '';
+    // pLocation.value = '';
+    // datetime.value = '';
+    // description.value = '';
+    render();
+  } catch (error) {
+    console.error(error);
   }
   console.log(state.newEvent);
+  // pName.value = '';
+  // pLocation.value = '';
+  // datetime.value = '';
+  // description.value = '';
 });
+
 
 const postDataFunction = async (url, data) => {
   const response = await fetch(url, {
@@ -101,7 +131,7 @@ const getState = async () => {
     const response = await fetch(API_URL);
     const json = await response.json();
     if (json.success) {
-      console.log(json.data);  /////////////////////////////////////////////////
+      // console.log(json.data);  /////////////////////////////////////////////////
       // console.log(json); ///////////////////////////////////////////////////////
       // TO-DO: remove console.log comments
       return json.data;
